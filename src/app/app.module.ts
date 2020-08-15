@@ -26,6 +26,7 @@ import { LineaTransporteFormComponent } from './componentes/linea-transporte/lin
 import { PortadaComponent } from './componentes/portada/portada.component';
 import { ModalLoginComponent } from './componentes/modal-login/modal-login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule } from '@agm/core';
 
 const config = {
   apiKey: 'AIzaSyDHBIGUSWtcp3xWpQ2ECoC_Q7Qj8NzoWj8',
@@ -66,6 +67,9 @@ const config = {
     AngularFireStorageModule,
     GoogleMapsModule,
     NgbModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCsOXLpxCZBNpyY1AtpCRXC4xqc4SjaS4Y',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
