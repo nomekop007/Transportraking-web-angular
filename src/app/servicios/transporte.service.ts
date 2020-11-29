@@ -11,7 +11,7 @@ export class TransporteService {
   lista: Observable<Transporte[]>;
   transporte: Observable<Transporte>;
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore) { }
 
   readTransportePorId(idTransporte: string) {
     return (this.transporte = this.afs
