@@ -5,12 +5,10 @@
         <a class="nav-link" [routerLink]="['/mapa']">Inicio</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/agencia']">Agencia</a>
+        <a class="nav-link" [routerLink]="['/agencia']" hidden>Agencia</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/lineatransporte']"
-          >Linea Transporte</a
-        >
+        <a class="nav-link" [routerLink]="['/lineatransporte']">Linea Transporte</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/transporte']">Transporte</a>
@@ -20,22 +18,13 @@
       </li>
 
       <li class="nav-item dropdown" routerLinkActive="active">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           Reportes
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['/reportes']">General</a>
-          <a class="dropdown-item" [routerLink]="['/reportes']"
-            >Por inactividad</a
-          >
+          <a class="dropdown-item" [routerLink]="['/reportes']">Por inactividad</a>
           <a class="dropdown-item" [routerLink]="['/reportes']">Por reclamos</a>
         </div>
       </li>
