@@ -9,8 +9,19 @@ import { map } from 'rxjs/operators';
 })
 export class AgenciaService {
   lista: Observable<Agencia[]>;
+  agencia: Observable<Agencia>;
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore) { }
+
+
+
+  readAgenciaPorId(idAgencia: string) {
+    return (this.agencia = this.afs
+      .doc<Agencia>('Agencia/' + idAgencia)
+      .valueChanges());
+  }
+
+
 
   createAgencia(agencia: Agencia) {
     this.afs

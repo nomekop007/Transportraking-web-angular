@@ -14,10 +14,12 @@ export class TransporteComponent implements OnInit {
   listaTransportes: Transporte[];
   listaLineaTransportes: LineaTransporte[];
 
+  nombreLinea: string;
+
   constructor(
     private servicioTransporte: TransporteService,
     private servicioLineaTransorte: LineaTransporteService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.servicioLineaTransorte
@@ -26,6 +28,13 @@ export class TransporteComponent implements OnInit {
         this.listaLineaTransportes = resultado;
       });
     this.servicioTransporte.readAllTransporte().subscribe((resultado) => {
+
+      resultado.map((transporte) => {
+        this.servicioLineaTransorte.readLineaTransportePorId(transporte.lineaTransporte).subscribe((r) => {
+          transporte.lineaTransporte = r.nombreLinea;
+        })
+      })
+
       this.listaTransportes = resultado;
     });
   }

@@ -17,14 +17,18 @@ export class LineaTransporteComponent implements OnInit {
   constructor(
     private servicioLineaTransorte: LineaTransporteService,
     private servicioAgencia: AgenciaService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.servicioLineaTransorte
       .readAllLineaTransporte()
       .subscribe((resultado) => {
+        resultado.map((linea) => {
+          this.servicioAgencia.readAgenciaPorId(linea.idAgencia).subscribe((r) => {
+            linea.idAgencia = r.nombreAgencia;
+          })
+        })
         this.listaLineaTransportes = resultado;
-        console.log(this.listaLineaTransportes);
       });
     this.servicioAgencia.readAllAgencia().subscribe((resultado) => {
       this.listaAgencias = resultado;

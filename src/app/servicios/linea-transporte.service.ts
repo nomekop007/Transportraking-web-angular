@@ -11,7 +11,7 @@ export class LineaTransporteService {
   lista: Observable<LineaTransporte[]>;
   linea: Observable<LineaTransporte>;
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore) { }
 
   readLineaTransportePorId(idLineaTransporte: string) {
     return (this.linea = this.afs
@@ -41,11 +41,14 @@ export class LineaTransporteService {
   }
 
   updateLineaTransporte(linea: LineaTransporte) {
+
+    console.log(linea);
     this.afs.doc('LineaTransporte/' + linea.idLineaTransporte).update(
       JSON.parse(
         JSON.stringify({
           idAgencia: linea.idAgencia,
           nombreLinea: linea.nombreLinea,
+          descripcion: linea.descripcion
         })
       )
     );

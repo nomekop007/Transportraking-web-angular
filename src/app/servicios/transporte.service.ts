@@ -1,7 +1,11 @@
+
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Transporte } from '../modelo/transporte';
+import { LineaTransporte } from '../modelo/linea-transporte';
+import { Cuenta } from '../modelo/cuenta';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -10,19 +14,37 @@ import { map } from 'rxjs/operators';
 export class TransporteService {
   lista: Observable<Transporte[]>;
   transporte: Observable<Transporte>;
+  lineaTransporte: Observable<LineaTransporte>;
+  cuenta: Observable<Cuenta>;
 
-  constructor(private afs: AngularFirestore) { }
+
+  constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) { }
 
   readTransportePorId(idTransporte: string) {
+
     return (this.transporte = this.afs
       .doc<Transporte>('Transporte/' + idTransporte)
       .valueChanges());
   }
 
-  createTransporte(transporte: Transporte) {
-    this.afs
-      .collection<Transporte>('Transporte')
-      .add(JSON.parse(JSON.stringify(transporte)));
+
+
+
+  async createTransporte(transporte: Transporte, cuenta: Cuenta) {
+    try {
+      const result = await this.afAuth.createUserWithEmailAndPassword(cuenta.correoElectronico, cuenta.password);
+      //le pasa la id del cuenta creado
+      transporte.idTransporte = result.user.uid;
+
+      this.afs
+        .collection<Transporte>('Transporte')
+        .doc(transporte.idTransporte)
+        .set(JSON.parse(JSON.stringify(transporte)));
+
+      return true;
+    } catch (error) {
+      return false
+    }
   }
 
   readAllTransporte() {
