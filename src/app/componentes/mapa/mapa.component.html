@@ -1,3 +1,10 @@
-<div class="container m-5">
-  <google-map></google-map>
+<div class="container m-4">
+  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="mapTypeId">
+    <agm-marker *ngFor="let item of arrayCoordenadas" [latitude]="item.latitud" [longitude]="item.longitud">
+      <agm-info-window>
+        {{item.idTransporte}}
+      </agm-info-window>
+    </agm-marker>
+
+  </agm-map>
 </div>

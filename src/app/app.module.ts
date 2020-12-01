@@ -26,6 +26,7 @@ import { LineaTransporteFormComponent } from './componentes/linea-transporte/lin
 import { PortadaComponent } from './componentes/portada/portada.component';
 import { ModalLoginComponent } from './componentes/modal-login/modal-login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AgmCoreModule } from '@agm/core';
 
 const config = {
   apiKey: 'AIzaSyDHBIGUSWtcp3xWpQ2ECoC_Q7Qj8NzoWj8',
@@ -60,6 +61,9 @@ const config = {
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyDHBIGUSWtcp3xWpQ2ECoC_Q7Qj8NzoWj8"
+    }),
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
     AngularFireAuthModule,
@@ -70,4 +74,4 @@ const config = {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

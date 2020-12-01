@@ -9,11 +9,9 @@ import { AngularFireDatabase } from '@angular/fire/database';
 export class CoordenadaService {
   listaCoordenadas: Observable<Coordenada[]>;
 
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase) { }
 
   getCoordenadas() {
-    return (this.listaCoordenadas = this.db
-      .list<Coordenada>('coordenadas')
-      .valueChanges());
+    return this.listaCoordenadas = this.db.list<Coordenada>('Coordenada').valueChanges();
   }
 }
