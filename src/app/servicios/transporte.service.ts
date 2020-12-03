@@ -21,7 +21,6 @@ export class TransporteService {
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) { }
 
   readTransportePorId(idTransporte: string) {
-
     return (this.transporte = this.afs
       .doc<Transporte>('Transporte/' + idTransporte)
       .valueChanges());
@@ -33,7 +32,7 @@ export class TransporteService {
   async createTransporte(transporte: Transporte, cuenta: Cuenta) {
     try {
       const result = await this.afAuth.createUserWithEmailAndPassword(cuenta.correoElectronico, cuenta.password);
-      //le pasa la id del cuenta creado
+      // le pasa la id del cuenta creado
       transporte.idTransporte = result.user.uid;
 
       this.afs

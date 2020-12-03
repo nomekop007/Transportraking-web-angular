@@ -1,8 +1,19 @@
 <div class="container m-4">
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="mapTypeId">
-    <agm-marker *ngFor="let item of arrayCoordenadas" [latitude]="item.latitud" [longitude]="item.longitud">
+    <agm-marker (markerClick)="getTransporte(item.idTransporte)" *ngFor="let item of arrayCoordenadas"
+      [latitude]="item.latitud" [longitude]="item.longitud" [iconUrl]="icono">
       <agm-info-window>
-        {{item.idTransporte}}
+        <span *ngIf="!windowMaker">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </span>
+        <span *ngIf="windowMaker">
+          <h6> {{lineaTransporte.nombreLinea }}</h6>
+          <span> {{transporte.patente}}</span><br>
+          <span> {{transporte.nombreConductor}}</span>
+        </span>
+
       </agm-info-window>
     </agm-marker>
 
