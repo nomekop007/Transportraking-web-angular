@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LineaTransporte } from '../modelo/linea-transporte';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
+
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -11,7 +13,13 @@ export class LineaTransporteService {
   lista: Observable<LineaTransporte[]>;
   linea: Observable<LineaTransporte>;
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private afs: AngularFirestore, private storage: AngularFireStorage) { }
+
+
+
+  buscarRecorridoLineaTransporte(idLineaTransporte: string) {
+    return this.storage.ref(`lineaDeTransporte/archivosKML/${idLineaTransporte}.kml`).getDownloadURL();
+  }
 
   readLineaTransportePorId(idLineaTransporte: string) {
     return (this.linea = this.afs

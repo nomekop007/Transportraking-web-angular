@@ -1,21 +1,39 @@
-<div class="container m-4">
-  <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="mapTypeId">
-    <agm-marker (markerClick)="getTransporte(item.idTransporte)" *ngFor="let item of arrayCoordenadas"
-      [latitude]="item.latitud" [longitude]="item.longitud" [iconUrl]="icono">
-      <agm-info-window>
-        <span *ngIf="!windowMaker">
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </span>
-        <span *ngIf="windowMaker">
-          <h6> {{lineaTransporte.nombreLinea }}</h6>
-          <span> {{transporte.patente}}</span><br>
-          <span> {{transporte.nombreConductor}}</span>
-        </span>
+<div class="row m-4">
+  <div class="col-md-2">
+    <div class="form-group">
+      <label for="input_line_transport">Lineas de Transporte</label>
+      <select multiple class="form-control" id="input_line_transport">
+        <option (click)="getRecorridoLinea(null)" id="ninguna">ninguna</option>
+        <option *ngFor="let item of arrayLineas" [id]="item.idLineaTransporte"
+          (click)="getRecorridoLinea(item.idLineaTransporte)">{{item.nombreLinea}}</option>
+      </select>
+    </div>
+    <span *ngIf="loadingLines">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </span>
 
-      </agm-info-window>
-    </agm-marker>
-
-  </agm-map>
+  </div>
+  <div class="col-md-10">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="mapTypeId">
+      <agm-kml-layer [url]="fileKML"> </agm-kml-layer>
+      <agm-marker (markerClick)="getTransporte(item.idTransporte)" *ngFor="let item of arrayCoordenadas"
+        [latitude]="item.latitud" [longitude]="item.longitud" [iconUrl]="icono">
+        <agm-info-window>
+          <span *ngIf="!loadingMaker">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </span>
+          <span *ngIf="loadingMaker">
+            <h6> {{lineaTransporte.nombreLinea }}</h6>
+            <span> {{transporte.patente}}</span><br>
+            <span> {{transporte.nombreConductor}}</span>
+          </span>
+        </agm-info-window>
+      </agm-marker>
+    </agm-map>
+    <h4>{{lineaSeleccionada}}</h4>
+  </div>
 </div>

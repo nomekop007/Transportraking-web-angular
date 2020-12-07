@@ -62,7 +62,7 @@ const config = {
     AppRoutingModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyDIMtzPltY8L09mnBYcTy-fhheLT4ijDPE"
+      apiKey: "'AIzaSyDIMtzPltY8L09mnBYcTy-fhheLT4ijDPE"
     }),
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,
