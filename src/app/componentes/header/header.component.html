@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
@@ -36,3 +36,56 @@
     </form>
   </div>
 </nav>
+ -->
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Transportraking</a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
+    data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <form class="form-inline my-2 my-lg-0">
+    <button class="btn btn-danger btn-sm" (click)="logout()" type="submit">
+      Cerrar sesion
+    </button>
+  </form>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="sidebar-sticky ">
+        <ul class="nav flex-column">
+          <li class="nav-item" routerLinkActive="card">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/mapa']">Mapa</a>
+          </li>
+          <li class="nav-item" routerLinkActive="card">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/agencia']" hidden>Agencia</a>
+          </li>
+          <li class="nav-item" routerLinkActive="card">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/lineatransporte']">Linea Transporte</a>
+          </li>
+          <li class="nav-item" routerLinkActive="card">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/transporte']">Transporte</a>
+          </li>
+          <li class="nav-item" routerLinkActive="card">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/reclamo']">Reclamo</a>
+          </li>
+          <li class="nav-item dropdown" routerLinkActive="card">
+            <a class="nav-link dropdown-toggle" routerLinkActive="active" href="#" id="navbarDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Reportes
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" [routerLink]="['/reportes']">General</a>
+              <a class="dropdown-item" [routerLink]="['/reportes']">Por inactividad</a>
+              <a class="dropdown-item" [routerLink]="['/reportes']">Por reclamos</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

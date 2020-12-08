@@ -5,6 +5,7 @@ import { Transporte } from '../../modelo/transporte';
 import { LineaTransporte } from '../../modelo/linea-transporte';
 import { Coordenada } from '../../modelo/coordenada';
 import { LineaTransporteService } from 'src/app/servicios/linea-transporte.service';
+import { AgenciaService } from 'src/app/servicios/agencia.service';
 
 @Component({
   selector: 'app-mapa',
@@ -26,20 +27,21 @@ export class MapaComponent implements OnInit {
   arrayLineas: LineaTransporte[];
   fileKML: any;
   lineaSeleccionada: string;
-
+  agenciaSeleccionada: string;
 
 
   constructor(
     private coordenadaService: CoordenadaService,
     private transporteService: TransporteService,
-    private lineaTransporteService: LineaTransporteService
+    private lineaTransporteService: LineaTransporteService,
+    private agenciaService: AgenciaService,
   ) {
     this.loadingMaker = true;
     this.loadingLines = false;
 
     this.lat = -35.4276878;
     this.lng = -71.6442594;
-    this.zoom = 14;
+    this.zoom = 13;
     this.mapTypeId = 'roadmap';
     this.icono = {
       url: 'assets/images/icono.png',
@@ -84,12 +86,16 @@ export class MapaComponent implements OnInit {
         this.loadingLines = false;
         this.lineaTransporteService.readLineaTransportePorId(ID_LINEA).subscribe((linea) => {
           this.lineaSeleccionada = linea.nombreLinea;
+          this.agenciaService.readAgenciaPorId(linea.idAgencia).subscribe((agencia) => {
+            this.agenciaSeleccionada = " - " + agencia.nombreAgencia;
+          });
         });
       });
     } else {
       this.fileKML = null;
       this.loadingLines = false;
       this.lineaSeleccionada = null;
+      this.agenciaSeleccionada = null;
     }
 
   }
