@@ -29,7 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 
 const config = {
-  apiKey: 'AIzaSyDIMtzPltY8L09mnBYcTy-fhheLT4ijDPE',
+  apiKey: '',
   authDomain: 'trasportracking.firebaseapp.com',
   databaseURL: 'https://trasportracking.firebaseio.com',
   projectId: 'trasportracking',
@@ -62,7 +62,7 @@ const config = {
     AppRoutingModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: "'AIzaSyDIMtzPltY8L09mnBYcTy-fhheLT4ijDPE"
+      apiKey: config.apiKey
     }),
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule,

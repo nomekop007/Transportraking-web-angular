@@ -1,11 +1,16 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Transportes</li>
+    </ol>
+  </nav>
+  <h1 class="h3">Transportes</h1>
+</div>
+
 <div class="container m-3">
   <div class="m-3">
-    <button
-      class="btn btn-primary"
-      type="button"
-      name="nuevoTransporte"
-      [routerLink]="['/transporte/form']"
-    >
+    <button class="btn btn-primary" type="button" name="nuevoTransporte" [routerLink]="['/transporte/form']">
       Nuevo Transporte
     </button>
   </div>
@@ -29,22 +34,13 @@
 
         <td *ngIf="!transporte.estado">Inactivo</td>
         <td>
-          <button
-            class="btn btn-primary"
-            type="button"
-            name="editar"
-            [routerLink]="['/transporte/form', transporte.idTransporte]"
-          >
+          <button class="btn btn-primary" type="button" name="editar"
+            [routerLink]="['/transporte/form', transporte.idTransporte]">
             Editar
           </button>
         </td>
         <td>
-          <button
-            (click)="eliminarTransporte(transporte)"
-            class="btn btn-danger"
-            type="button"
-            name="eliminar"
-          >
+          <button (click)="eliminarTransporte(transporte)" class="btn btn-danger" type="button" name="eliminar">
             Eliminar
           </button>
         </td>

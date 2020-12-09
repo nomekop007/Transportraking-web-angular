@@ -1,11 +1,16 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">lineas transporte</li>
+    </ol>
+  </nav>
+  <h1 class="h3">lineas transporte</h1>
+</div>
+
 <div class="container">
   <div class="m-3">
-    <button
-      class="btn btn-primary"
-      type="button"
-      name="nuevoLineaTransporte"
-      [routerLink]="['/lineatransporte/form']"
-    >
+    <button class="btn btn-primary" type="button" name="nuevoLineaTransporte" [routerLink]="['/lineatransporte/form']">
       Nueva Linea transporte
     </button>
   </div>
@@ -23,25 +28,16 @@
         <td>{{ lineaTransporte.nombreLinea }}</td>
         <td>{{ lineaTransporte.idAgencia }}</td>
         <td>
-          <button
-            class="btn btn-primary"
-            type="button"
-            name="editar"
-            [routerLink]="[
+          <button class="btn btn-primary" type="button" name="editar" [routerLink]="[
               '/lineatransporte/form',
               lineaTransporte.idLineaTransporte
-            ]"
-          >
+            ]">
             Editar
           </button>
         </td>
         <td>
-          <button
-            (click)="eliminarLineaTransporte(lineaTransporte)"
-            class="btn btn-danger"
-            type="button"
-            name="eliminar"
-          >
+          <button (click)="eliminarLineaTransporte(lineaTransporte)" class="btn btn-danger" type="button"
+            name="eliminar">
             Eliminar
           </button>
         </td>

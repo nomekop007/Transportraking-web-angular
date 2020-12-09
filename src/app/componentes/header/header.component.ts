@@ -7,9 +7,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public auth: AngularFireAuth) {}
+  constructor(public auth: AngularFireAuth) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   logout() {
     this.auth.signOut();

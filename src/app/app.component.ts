@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { environment } from '../environments/environment';
 import { User } from 'firebase';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -11,7 +12,7 @@ export class AppComponent {
   title = 'transportes-app';
   usuario: User;
 
-  constructor(public auth: AngularFireAuth) {}
+  constructor(public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
     this.auth.user.subscribe((resultado) => {
