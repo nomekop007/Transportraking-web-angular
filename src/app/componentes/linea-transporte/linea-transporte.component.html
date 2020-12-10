@@ -10,17 +10,17 @@
 
 <div class="container">
   <div class="m-3">
-    <button class="btn btn-primary" type="button" name="nuevoLineaTransporte" [routerLink]="['/lineatransporte/form']">
-      Nueva Linea transporte
+    <button class="btn btn-outline-primary btn-sm" type="button" name="nuevoLineaTransporte"
+      [routerLink]="['/lineatransporte/form']">
+      Registrar Linea transporte
     </button>
   </div>
-  <table class="table table-bordered" aria-describedby="tablaLineas">
-    <thead>
+  <table class="table table-striped table-bordered" aria-describedby="tablaLineas">
+    <thead class="btn-dark">
       <tr>
         <th scope="col">Nombre Linea</th>
         <th scope="col">Agencia</th>
-        <th scope="col">Editar</th>
-        <th scope="col">Eliminar</th>
+        <th scope="col">acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -28,17 +28,15 @@
         <td>{{ lineaTransporte.nombreLinea }}</td>
         <td>{{ lineaTransporte.idAgencia }}</td>
         <td>
-          <button class="btn btn-primary" type="button" name="editar" [routerLink]="[
+          <button class="btn btn-outline-info btn-sm m-2" type="button" name="editar" [routerLink]="[
               '/lineatransporte/form',
               lineaTransporte.idLineaTransporte
             ]">
-            Editar
+            <i class="fas fa-edit"></i>
           </button>
-        </td>
-        <td>
-          <button (click)="eliminarLineaTransporte(lineaTransporte)" class="btn btn-danger" type="button"
-            name="eliminar">
-            Eliminar
+          <button (click)="eliminarLineaTransporte(lineaTransporte)" class="btn btn-outline-danger  btn-sm m-2"
+            type="button" name="eliminar">
+            <i class="fas fa-trash-alt"></i>
           </button>
         </td>
       </tr>

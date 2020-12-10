@@ -31,13 +31,14 @@
         </div>
       </div>
     </div>
-    <button [disabled]="!lineatransporteForm.form.valid" (click)="agregarLineaTransporte()" class="btn btn-primary"
-      type="button" name="crearLineaTransporte" *ngIf="!lineaTransporte.idLineaTransporte; else elseBlock">
-      Agregar linea transporte
+    <button [disabled]="!lineatransporteForm.form.valid" (click)="agregarLineaTransporte()"
+      class="btn btn-outline-success btn-sm" type="button" name="crearLineaTransporte"
+      *ngIf="!lineaTransporte.idLineaTransporte; else elseBlock">
+      Registrar linea transporte
     </button>
     <ng-template #elseBlock>
-      <button [disabled]="!lineatransporteForm.form.valid" (click)="actualizarLineaTransporte()" class="btn btn-primary"
-        type="button" name="actualizarLineaTransporte">
+      <button [disabled]="!lineatransporteForm.form.valid" (click)="actualizarLineaTransporte()"
+        class="btn btn-outline-success btn-sm" type="button" name="actualizarLineaTransporte">
         Actualizar linea transporte
       </button>
     </ng-template>

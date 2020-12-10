@@ -7,9 +7,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+
+  nombreUsuario: string;
+
   constructor(public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
+    this.auth.onAuthStateChanged((user) => {
+      this.nombreUsuario = user.email;
+    })
   }
 
   logout() {

@@ -13,7 +13,7 @@
   <div class="col-md-2">
     <div class="form-group">
       <label for="input_line_transport">Lineas</label>
-      <select multiple class="form-control" id="input_line_transport">
+      <select multiple class="form-control" id="input_line_transport" style="  background-color: #d6dcdc; ">
         <option (click)="getRecorridoLinea(null)" id="ninguna">ninguna</option>
         <option *ngFor="let item of arrayLineas" [id]="item.idLineaTransporte"
           (click)="getRecorridoLinea(item.idLineaTransporte)">{{item.nombreLinea}}</option>
@@ -39,8 +39,8 @@
           </span>
           <span *ngIf="loadingMaker">
             <h6> {{lineaTransporte.nombreLinea }}</h6>
-            <span> {{transporte.patente}}</span><br>
-            <span> {{transporte.nombreConductor}}</span>
+            <span>Patente: {{transporte.patente}}</span><br>
+            <span>Conductor: {{transporte.nombreConductor}}</span>
           </span>
         </agm-info-window>
       </agm-marker>

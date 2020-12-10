@@ -68,13 +68,13 @@
 
 
 
-    <button [disabled]="!transporteForm.form.valid" (click)="agregarTransporte()" class="btn btn-primary" type="button"
-      name="crearTransporte" *ngIf="!transporte.idTransporte; else elseBlock">
+    <button [disabled]="!transporteForm.form.valid" (click)="agregarTransporte()" class="btn btn-outline-success btn-sm"
+      type="button" name="crearTransporte" *ngIf="!transporte.idTransporte; else elseBlock">
       Agregar transporte
     </button>
     <ng-template #elseBlock>
-      <button [disabled]="!transporteForm.form.valid" (click)="actualizarTransporte()" class="btn btn-primary"
-        type="button" name="actualizarTransporte">
+      <button [disabled]="!transporteForm.form.valid" (click)="actualizarTransporte()"
+        class="btn btn-outline-success btn-sm" type="button" name="actualizarTransporte">
         Actualizar transporte
       </button>
     </ng-template>

@@ -66,6 +66,8 @@ export class MapaComponent implements OnInit {
   }
 
 
+
+
   getTransporte(ID_TRANSPORTE: string) {
     this.loadingMaker = false;
     this.transporteService.readTransportePorId(ID_TRANSPORTE).subscribe((transporte) => {
@@ -83,11 +85,11 @@ export class MapaComponent implements OnInit {
     if (ID_LINEA) {
       this.lineaTransporteService.buscarRecorridoLineaTransporte(ID_LINEA).subscribe((file) => {
         this.fileKML = file;
-        this.loadingLines = false;
         this.lineaTransporteService.readLineaTransportePorId(ID_LINEA).subscribe((linea) => {
           this.lineaSeleccionada = linea.nombreLinea;
           this.agenciaService.readAgenciaPorId(linea.idAgencia).subscribe((agencia) => {
             this.agenciaSeleccionada = " - " + agencia.nombreAgencia;
+            this.loadingLines = false;
           });
         });
       });

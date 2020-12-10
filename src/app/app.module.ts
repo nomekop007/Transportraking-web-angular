@@ -29,7 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AgmCoreModule } from '@agm/core';
 
 const config = {
-  apiKey: '',
+  apiKey: 'AIzaSyDIMtzPltY8L09mnBYcTy-fhheLT4ijDPE',
   authDomain: 'trasportracking.firebaseapp.com',
   databaseURL: 'https://trasportracking.firebaseio.com',
   projectId: 'trasportracking',
