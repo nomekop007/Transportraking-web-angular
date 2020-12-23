@@ -10,16 +10,24 @@
 
 
 <div class="container m-3">
-  <table class="table table-bordered">
-    <thead>
+  <table class="table table-striped table-bordered">
+    <thead class="btn-dark">
       <tr>
-        <th>Nombre Conductor</th>
         <th>Patente</th>
+        <th>conductor</th>
         <th>titulo reclamo</th>
         <th>descripcion</th>
+        <th>Usuario</th>
       </tr>
     </thead>
     <tbody>
+      <tr *ngFor="let reclamo of reclamos">
+        <td>{{reclamo.idTransporte}}</td>
+        <td>{{reclamo.idReclamo}}</td>
+        <td>{{reclamo.titulo}}</td>
+        <td style='font-size: 0.8rem;'>{{reclamo.comentario}}</td>
+        <td>{{reclamo.idUsuario}}</td>
+      </tr>
     </tbody>
   </table>
 </div>

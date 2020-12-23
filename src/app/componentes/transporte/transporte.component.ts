@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Transporte } from 'src/app/modelo/transporte';
 import { TransporteService } from 'src/app/servicios/transporte.service';
+import { CoordenadaService } from 'src/app/servicios/coordenada.service';
 import { LineaTransporte } from 'src/app/modelo/linea-transporte';
 import { LineaTransporteService } from 'src/app/servicios/linea-transporte.service';
 import Swal from 'sweetalert2';
@@ -18,7 +19,8 @@ export class TransporteComponent implements OnInit {
 
   constructor(
     private servicioTransporte: TransporteService,
-    private servicioLineaTransorte: LineaTransporteService
+    private servicioLineaTransorte: LineaTransporteService,
+    private serviceCoodenada: CoordenadaService
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +53,7 @@ export class TransporteComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.servicioTransporte.deleteTransporte(transporte.idTransporte);
+        this.serviceCoodenada.deleteCoodenada(transporte.idTransporte);
         Swal.fire('Eliminado', 'El transporte ha sido eliminado.', 'success');
       }
     });

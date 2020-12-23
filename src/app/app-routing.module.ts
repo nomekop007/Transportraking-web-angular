@@ -14,7 +14,7 @@ import { ModalLoginComponent } from './componentes/modal-login/modal-login.compo
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'modal-login', component: ModalLoginComponent},
+  { path: 'modal-login', component: ModalLoginComponent },
   { path: 'mapa', component: MapaComponent },
   { path: 'reclamo', component: ReclamoComponent },
   { path: 'reportes', component: ReportesComponent },
@@ -30,10 +30,11 @@ const routes: Routes = [
     path: 'lineatransporte/form/:idLineaTransporte',
     component: LineaTransporteFormComponent,
   },
+  { path: "**", pathMatch: "full", redirectTo: "mapa" }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

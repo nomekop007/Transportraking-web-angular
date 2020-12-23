@@ -9,13 +9,19 @@ import { map } from 'rxjs/operators';
 })
 export class UsuarioService {
   lista: Observable<Usuario[]>;
-
-  constructor(private afs: AngularFirestore) {}
+  usuario: Observable<Usuario>;
+  constructor(private afs: AngularFirestore) { }
 
   createUsuario(usuario: Usuario) {
     this.afs
       .collection<Usuario>('Usuario')
       .add(JSON.parse(JSON.stringify(usuario)));
+  }
+
+  readFindById(idUsuario: string) {
+    return (this.usuario = this.afs
+      .doc<Usuario>('Usuario/' + idUsuario)
+      .valueChanges());
   }
 
   readAllUsuario() {

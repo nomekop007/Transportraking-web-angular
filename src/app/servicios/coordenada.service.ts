@@ -14,4 +14,8 @@ export class CoordenadaService {
   getCoordenadas() {
     return this.listaCoordenadas = this.db.list<Coordenada>('Coordenada').valueChanges();
   }
+
+  deleteCoodenada(ID_TRANSPORTE: string) {
+    this.db.object<Coordenada>('Coordenada/' + ID_TRANSPORTE).remove();
+  }
 }

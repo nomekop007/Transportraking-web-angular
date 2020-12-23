@@ -11,23 +11,23 @@ export class ReclamoService {
   listaReclamos: Observable<Reclamo[]>;
   reclamo: Observable<Reclamo>;
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private afs: AngularFirestore) { }
 
   getReclamoPorId(idReclamo: string) {
     return (this.reclamo = this.afs
-      .doc<Reclamo>('reclamos/' + idReclamo)
+      .doc<Reclamo>('Reclamos/' + idReclamo)
       .valueChanges());
   }
 
   addReclamo(reclamo: Reclamo) {
     this.afs
-      .collection<Reclamo>('reclamos')
+      .collection<Reclamo>('Reclamos')
       .add(JSON.parse(JSON.stringify(reclamo)));
   }
 
   getReclamos() {
     return (this.listaReclamos = this.afs
-      .collection<Reclamo>('reclamos')
+      .collection<Reclamo>('Reclamos')
       .snapshotChanges()
       .pipe(
         map((actions) =>
@@ -41,7 +41,7 @@ export class ReclamoService {
   }
 
   updateReclamo(reclamo: Reclamo) {
-    this.afs.doc('reclamos/' + reclamo.idReclamo).update(
+    this.afs.doc('Reclamos/' + reclamo.idReclamo).update(
       JSON.parse(
         JSON.stringify({
           idUsuario: reclamo.idUsuario,
