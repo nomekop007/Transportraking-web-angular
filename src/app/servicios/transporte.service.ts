@@ -61,6 +61,21 @@ export class TransporteService {
       ));
   }
 
+  readAllByLineTransporte(ID_LINEA) {
+    return (this.lista = this.afs
+      .collection<Transporte>('Transporte', ref => ref.where('lineaTransporte', '==', ID_LINEA))
+      .snapshotChanges()
+      .pipe(
+        map((actions) =>
+          actions.map((a) => {
+            const data = a.payload.doc.data();
+            const idTransporte = a.payload.doc.id;
+            return { idTransporte, ...data };
+          })
+        )
+      ));
+  }
+
   updateTransporte(transporte: Transporte) {
     this.afs.doc('Transporte/' + transporte.idTransporte).update(
       JSON.parse(

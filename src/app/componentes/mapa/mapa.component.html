@@ -9,8 +9,8 @@
 </div>
 
 
-<div class="row m-3">
-  <div class="col-md-2">
+<div class="row m-2">
+  <div class="col-md-3">
     <div class="form-group">
       <label for="input_line_transport">Lineas</label>
       <select multiple class="form-control" id="input_line_transport" style="  background-color: #d6dcdc; ">
@@ -26,7 +26,7 @@
     </span>
 
   </div>
-  <div class="col-md-10">
+  <div class="col-md-9">
     <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="mapTypeId">
       <agm-kml-layer [url]="fileKML"> </agm-kml-layer>
       <agm-marker (markerClick)="getTransporte(item.idTransporte)" *ngFor="let item of arrayCoordenadas"
@@ -40,7 +40,8 @@
           <span *ngIf="loadingMaker">
             <h6> {{lineaTransporte.nombreLinea }}</h6>
             <span>Patente: {{transporte.patente}}</span><br>
-            <span>Conductor: {{transporte.nombreConductor}}</span>
+            <span>Conductor: {{transporte.nombreConductor}}</span><br>
+            <span>Tiempo de inicio: {{item.horaInicio}}</span><br>
           </span>
         </agm-info-window>
       </agm-marker>

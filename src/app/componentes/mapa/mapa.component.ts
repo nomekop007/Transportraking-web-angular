@@ -18,7 +18,7 @@ export class MapaComponent implements OnInit {
   lng: number;
   zoom: number;
   mapTypeId: string;
-  arrayCoordenadas: Coordenada[];
+  arrayCoordenadas: Coordenada[] = [];
   icono: any;
   transporte: Transporte = new Transporte();
   lineaTransporte: LineaTransporte = new LineaTransporte();
@@ -66,8 +66,6 @@ export class MapaComponent implements OnInit {
   }
 
 
-
-
   getTransporte(ID_TRANSPORTE: string) {
     this.loadingMaker = false;
     this.transporteService.readTransportePorId(ID_TRANSPORTE).subscribe((transporte) => {
@@ -93,14 +91,32 @@ export class MapaComponent implements OnInit {
           });
         });
       });
+      this.getCoordenadaLinea(ID_LINEA);
     } else {
       this.fileKML = null;
       this.loadingLines = false;
       this.lineaSeleccionada = null;
       this.agenciaSeleccionada = null;
+      this.arrayCoordenadas.length = 0;
+      this.getCoordenadas();
     }
-
   }
+
+
+  getCoordenadaLinea(ID_LINEA) {
+
+    this.arrayCoordenadas = [];
+
+    this.transporteService.readAllByLineTransporte(ID_LINEA).subscribe((transportes: Transporte[]) => {
+      this.arrayCoordenadas.length = 0;
+      transportes.map((transporte: Transporte) => {
+        this.coordenadaService.getCoordenada(transporte.idTransporte).subscribe((coordenada: Coordenada) => {
+          this.arrayCoordenadas.push(coordenada);
+        })
+      })
+    });
+  }
+
 
 
   ngOnInit(): void {
